@@ -21,7 +21,7 @@
 
   <properties>
   
-    <version.org.jboss.shrinkwrap>1.0.0-beta-1-SNAPSHOT</version.org.jboss.shrinkwrap>
+    <version.org.jboss.shrinkwrap>1.0.0-beta-1</version.org.jboss.shrinkwrap>
     <!-- Known to work with Jetty version 6.0.0 and greater (note that the name of the JSP 2.1 has changed several times) -->
     <version.org.mortbay.jetty_jetty>6.1.24</version.org.mortbay.jetty_jetty>
     <version.org.apache.httpcomponents_httpclient>4.0.1</version.org.apache.httpcomponents_httpclient>
