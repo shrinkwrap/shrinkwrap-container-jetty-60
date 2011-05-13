@@ -1,26 +1,75 @@
 <?xml version="1.0" encoding="UTF-8"?>
+  <!--
+  vi:ts=2:sw=2:expandtab:
+-->
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 
+  <!-- Parent -->
   <parent>
-    <groupId>org.jboss.shrinkwrap</groupId>
-    <artifactId>shrinkwrap-parent</artifactId>
-    <version>1.0.0-beta-1-SNAPSHOT</version>
-    <relativePath>../pom.xml</relativePath>
+    <groupId>org.jboss</groupId>
+    <artifactId>jboss-parent</artifactId>
+    <version>5</version>
   </parent>
 
   <modelVersion>4.0.0</modelVersion>
 
-  <artifactId>shrinkwrap-extension-jetty-6</artifactId>
-  <name>ShrinkWrap Jetty 6 Integration Extension</name>
+  <groupId>org.jboss.shrinkwrap.container</groupId>
+  <artifactId>shrinkwrap-container-jetty-60</artifactId>
+  <version>1.0.0-beta-1-SNAPSHOT</version>
+  <name>ShrinkWrap Jetty 6 (to 7) Integration Extension</name>
   <description>ShrinkWrap integration extension for the Jetty 6 container</description>
 
   <properties>
   
+    <version.org.jboss.shrinkwrap>1.0.0-beta-1-SNAPSHOT</version.org.jboss.shrinkwrap>
     <!-- Known to work with Jetty version 6.0.0 and greater (note that the name of the JSP 2.1 has changed several times) -->
     <version.org.mortbay.jetty_jetty>6.1.24</version.org.mortbay.jetty_jetty>
     <version.org.apache.httpcomponents_httpclient>4.0.1</version.org.apache.httpcomponents_httpclient>
+    <version.junit_junit>4.8</version.junit_junit>
 
   </properties>
+  
+  <!-- SCM -->
+  <scm>
+    <connection>scm:git:git://github.com/shrinkwrap/shrinkwrap-container-jetty-60.git</connection>
+    <developerConnection>scm:git:git@github.com:shrinkwrap/shrinkwrap-container-jetty-60.git</developerConnection>
+    <url>https://github.com/shrinkwrap/shrinkwrap-container-jetty-60</url>
+  </scm>
+
+  <!-- Issues -->
+  <issueManagement>
+    <system>jira</system>
+    <url>http://jira.jboss.com/jira/browse/SHRINKWRAP</url>
+  </issueManagement>
+
+  <!-- Licenses -->
+  <licenses>
+    <license>
+      <name>Apache License, Version 2.0</name>
+      <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+    </license>
+  </licenses>
+  
+  <build>
+    <plugins>
+    
+      <!-- Surefire -->
+      <plugin>
+        <artifactId>maven-surefire-plugin</artifactId>
+        <configuration>
+          <redirectTestOutputToFile>true</redirectTestOutputToFile>
+          <trimStackTrace>false</trimStackTrace>
+          <printSummary>true</printSummary>
+          <includes>
+            <include>**/*TestCase.java</include>
+            <include>**/*TestSuite.java</include>
+          </includes>
+          <forkMode>always</forkMode>
+        </configuration>
+      </plugin>
+    
+    </plugins>
+  </build>
 
   <dependencies>
 
@@ -30,12 +79,12 @@
     <dependency>
       <groupId>org.jboss.shrinkwrap</groupId>
       <artifactId>shrinkwrap-api</artifactId>
-      <version>${project.version}</version>
+      <version>${version.org.jboss.shrinkwrap}</version>
     </dependency>
     <dependency>
       <groupId>org.jboss.shrinkwrap</groupId>
       <artifactId>shrinkwrap-impl-base</artifactId>
-      <version>${project.version}</version>
+      <version>${version.org.jboss.shrinkwrap}</version>
       <scope>test</scope>
     </dependency>
 
@@ -46,6 +95,7 @@
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
       <scope>test</scope>
+      <version>${version.junit_junit}</version>
     </dependency>
     
     <!-- org.mortbay.jetty --> 
@@ -88,8 +138,38 @@
     </dependency>
 
   </dependencies>
+  
+  <repositories>
+    <repository>
+      <id>jboss-public-repository</id>
+      <name>JBoss Repository</name>
+      <url> https://repository.jboss.org/nexus/content/groups/public</url>
+      <releases>
+        <enabled>true</enabled>
+        <updatePolicy>never</updatePolicy>
+      </releases>
+      <snapshots>
+        <enabled>true</enabled>
+        <updatePolicy>never</updatePolicy>
+      </snapshots>
+    </repository>
+  </repositories>
 
-<!--
-vi:ts=2:sw=2:expandtab:
--->
+  <pluginRepositories>
+    <pluginRepository>
+      <id>jboss-public-repository</id>
+      <name>JBoss Repository</name>
+      <url> https://repository.jboss.org/nexus/content/groups/public</url>
+      <releases>
+        <enabled>true</enabled>
+        <updatePolicy>never</updatePolicy>
+      </releases>
+      <snapshots>
+        <enabled>true</enabled>
+        <updatePolicy>never</updatePolicy>
+      </snapshots>
+    </pluginRepository>
+  </pluginRepositories> 
+  
+
 </project>
