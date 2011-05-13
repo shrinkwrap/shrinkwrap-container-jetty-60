@@ -15,7 +15,7 @@
 
   <groupId>org.jboss.shrinkwrap.container</groupId>
   <artifactId>shrinkwrap-container-jetty-60</artifactId>
-  <version>1.0.0-beta-1-SNAPSHOT</version>
+  <version>1.0.0-beta-1</version>
   <name>ShrinkWrap Jetty 6 (to 7) Integration Extension</name>
   <description>ShrinkWrap integration extension for the Jetty 6 container</description>
 
